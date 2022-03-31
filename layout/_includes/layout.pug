@@ -9,6 +9,7 @@
 - pageTitle = pageTitle.length > 0 ? pageTitle : page.slug
 - var title = pageTitle
 - if (pageTitle != config.title) pageTitle += ' │ ' + config.title
+- var githubUrl = config.github || ''
 
 
 doctype html
@@ -25,7 +26,6 @@ html(lang=config.language)
       h1#title= title
       #menu-outer
         nav#menu-inner
-          - console.log(page.path)
           if is_post() || is_category() || is_tag()
             a#menu-back(href="javascript:history.back()") Back
             if is_post()
@@ -50,6 +50,8 @@ html(lang=config.language)
               a #{new Date().getFullYear()}@ #{config.author}
               a(href="/atom.xml")
                 img(src="/assets/rss.png")
+              a(href=`${githubUrl}`)
+                img(src="/assets/github.png")
             #hexo
               a Powered by&nbsp
               a(href="https://hexo.io") Hexo
